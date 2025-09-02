@@ -1,9 +1,12 @@
 package sarahcode.springframework.restmvc.services;
 
+import java.util.List;
 import java.util.UUID;
 import sarahcode.springframework.restmvc.model.Beer;
 
 public interface BeerService {
+
+  List<Beer> beerList();
 
   Beer getBeerById(UUID id);
 }
