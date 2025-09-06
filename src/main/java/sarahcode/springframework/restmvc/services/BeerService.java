@@ -6,7 +6,9 @@ import sarahcode.springframework.restmvc.model.Beer;
 
 public interface BeerService {
 
-  List<Beer> beerList();
+    List<Beer> beerList();
 
-  Beer getBeerById(UUID id);
+    Beer getBeerById(UUID id);
+
+    Beer saveNewBeer(Beer beer);
 }
