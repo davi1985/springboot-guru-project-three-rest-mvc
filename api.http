@@ -19,3 +19,17 @@ Accept: application/json
     "price": 12.99,
     "quantityOnHand": 100
 }
+
+
+###
+PUT http://localhost:8080/api/v1/beer/ccf08df6-07f9-4de3-9e48-cbd7c6ace3d0
+Content-Type: application/json
+Accept: application/json
+
+{
+    "beerName": "Update New Beer",
+    "beerStyle": "ALE",
+    "upc": 123456,
+    "price": 14,
+    "quantityOnHand": 99
+}
