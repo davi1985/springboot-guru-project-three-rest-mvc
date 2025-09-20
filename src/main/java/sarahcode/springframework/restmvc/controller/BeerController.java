@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -60,6 +61,13 @@ public class BeerController {
     @DeleteMapping("{beerId}")
     public ResponseEntity deleteById(@PathVariable("beerId") UUID beerUuid) {
         beerService.remove(beerUuid);
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @PatchMapping("{beerId}")
+    public ResponseEntity update(@PathVariable("beerId") UUID beerUuid, @RequestBody Beer beer) {
+        beerService.update(beerUuid, beer);
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }

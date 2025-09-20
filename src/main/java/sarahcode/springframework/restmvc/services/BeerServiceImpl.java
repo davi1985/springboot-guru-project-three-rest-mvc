@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import sarahcode.springframework.restmvc.mapper.BeerMapper;
 import sarahcode.springframework.restmvc.model.Beer;
 import sarahcode.springframework.restmvc.model.BeerStyle;
 
@@ -17,9 +20,11 @@ import sarahcode.springframework.restmvc.model.BeerStyle;
 public class BeerServiceImpl implements BeerService {
 
     private final Map<UUID, Beer> beerMap;
+    private final BeerMapper beerMapper;
 
-    public BeerServiceImpl() {
+    public BeerServiceImpl(BeerMapper beerMapper) {
         this.beerMap = new HashMap<>();
+        this.beerMapper = beerMapper;
 
         Beer beer1 = Beer.builder()
                 .id(UUID.randomUUID())
@@ -104,5 +109,17 @@ public class BeerServiceImpl implements BeerService {
     @Override
     public void remove(UUID beerUuid) {
         beerMap.remove(beerUuid);
+    }
+
+    @Override
+    public void update(UUID beerUuid, Beer beer) {
+        Beer existing = beerMap.get(beerUuid);
+
+        if (Objects.isNull(existing)) {
+            throw new IllegalArgumentException("Beer not found");
+        }
+
+        beerMapper.updateBeerFromDto(beer, existing);
+        existing.setUpdatedDate(LocalDateTime.now());
     }
 }
