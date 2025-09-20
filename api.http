@@ -33,3 +33,9 @@ Accept: application/json
     "price": 14,
     "quantityOnHand": 99
 }
+
+
+###
+DELETE  http://localhost:8080/api/v1/beer/128acec8-1923-428c-a4fd-0285890b8c9d
+Content-Type: application/json
+Accept: application/json
