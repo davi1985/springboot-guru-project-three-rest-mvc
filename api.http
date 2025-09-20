@@ -4,7 +4,7 @@ Accept: application/json
 
 ### GET by ID
 
-GET http://localhost:8080/api/v1/beer/2777c441-6ab3-4040-8f46-674a35fe2060
+GET http://localhost:8080/api/v1/beer/1bfe641b-6495-4a11-be54-3ad8fbedf972
 Accept: application/json
 
 ### POST
